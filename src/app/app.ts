@@ -39,7 +39,6 @@ export class App implements OnInit {
   ngOnInit() {
     console.log(this.firebaseService.auth);
     console.log(this.firebaseService.db);
-    console.log(this.firebaseService.analytics);
   }
 
 }
