@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { firebaseConfig } from '../../../environments';
 
+import { getStorage } from "firebase/storage";
+
 import {
   initializeApp,      // Initialize Firebase
   getApps,            // Check if Firebase apps are initialized
   getApp              // Get the default app
 } from "firebase/app";
-
 
 import {
   getFirestore,       // Firestore database
@@ -35,6 +36,7 @@ import {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+const store = getStorage(app);
 
 @Injectable({
   providedIn: 'root'
@@ -45,10 +47,12 @@ export class FirebaseService {
     this.app = app;
     this.db = db;
     this.auth = auth;
+    this.store = store;
   }
 
   app = initializeApp(firebaseConfig);
   db = getFirestore(app);
   auth = getAuth(app);
+  store = getStorage(app);
 
 }
