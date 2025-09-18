@@ -1,14 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
-
 // Import Firebase SDKs
 import {
   initializeApp,      // Initialize Firebase
   getApps,            // Check if Firebase apps are initialized
   getApp              // Get the default app
 } from "firebase/app";
+
 
 import {
   getFirestore,       // Firestore database
@@ -34,8 +30,19 @@ import {
 } from "firebase/auth";
 
 
+import {
+  RouterModule,
+  RouterOutlet
+} from '@angular/router';
+
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { getAnalytics } from "firebase/analytics";
 import { firebaseConfig } from '../environments';
+import { FirestoreModule } from '@angular/fire/firestore';
+import { Navigation } from "./shared/components/navigation/navigation";
+import { Footer } from "./shared/components/footer/footer";
 
 
 @Component({
@@ -44,8 +51,12 @@ import { firebaseConfig } from '../environments';
   imports: [
     CommonModule,
     FormsModule,
-    RouterOutlet
-  ],
+    RouterOutlet,
+    RouterModule,
+    FirestoreModule,
+    Navigation,
+    Footer
+],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
