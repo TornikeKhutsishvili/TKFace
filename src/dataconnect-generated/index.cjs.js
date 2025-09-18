@@ -1,11 +1,20 @@
-const { queryRef, executeQuery, mutationRef, executeMutation, validateArgs } = require('firebase/data-connect');
+import {
+  queryRef,
+  executeQuery,
+  mutationRef,
+  executeMutation,
+  validateArgs
+} from 'firebase/data-connect';
+
+
 
 const connectorConfig = {
   connector: 'example',
   service: 'tkface',
   location: 'us-central1'
 };
-exports.connectorConfig = connectorConfig;
+const _connectorConfig = connectorConfig;
+export { _connectorConfig as connectorConfig };
 
 const createMovieRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
@@ -13,11 +22,12 @@ const createMovieRef = (dcOrVars, vars) => {
   return mutationRef(dcInstance, 'CreateMovie', inputVars);
 }
 createMovieRef.operationName = 'CreateMovie';
-exports.createMovieRef = createMovieRef;
+const _createMovieRef = createMovieRef;
+export { _createMovieRef as createMovieRef };
 
-exports.createMovie = function createMovie(dcOrVars, vars) {
+export function createMovie(dcOrVars, vars) {
   return executeMutation(createMovieRef(dcOrVars, vars));
-};
+}
 
 const upsertUserRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
@@ -25,11 +35,12 @@ const upsertUserRef = (dcOrVars, vars) => {
   return mutationRef(dcInstance, 'UpsertUser', inputVars);
 }
 upsertUserRef.operationName = 'UpsertUser';
-exports.upsertUserRef = upsertUserRef;
+const _upsertUserRef = upsertUserRef;
+export { _upsertUserRef as upsertUserRef };
 
-exports.upsertUser = function upsertUser(dcOrVars, vars) {
+export function upsertUser(dcOrVars, vars) {
   return executeMutation(upsertUserRef(dcOrVars, vars));
-};
+}
 
 const addReviewRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
@@ -37,11 +48,12 @@ const addReviewRef = (dcOrVars, vars) => {
   return mutationRef(dcInstance, 'AddReview', inputVars);
 }
 addReviewRef.operationName = 'AddReview';
-exports.addReviewRef = addReviewRef;
+const _addReviewRef = addReviewRef;
+export { _addReviewRef as addReviewRef };
 
-exports.addReview = function addReview(dcOrVars, vars) {
+export function addReview(dcOrVars, vars) {
   return executeMutation(addReviewRef(dcOrVars, vars));
-};
+}
 
 const deleteReviewRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
@@ -49,11 +61,12 @@ const deleteReviewRef = (dcOrVars, vars) => {
   return mutationRef(dcInstance, 'DeleteReview', inputVars);
 }
 deleteReviewRef.operationName = 'DeleteReview';
-exports.deleteReviewRef = deleteReviewRef;
+const _deleteReviewRef = deleteReviewRef;
+export { _deleteReviewRef as deleteReviewRef };
 
-exports.deleteReview = function deleteReview(dcOrVars, vars) {
+export function deleteReview(dcOrVars, vars) {
   return executeMutation(deleteReviewRef(dcOrVars, vars));
-};
+}
 
 const listMoviesRef = (dc) => {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
@@ -61,11 +74,12 @@ const listMoviesRef = (dc) => {
   return queryRef(dcInstance, 'ListMovies');
 }
 listMoviesRef.operationName = 'ListMovies';
-exports.listMoviesRef = listMoviesRef;
+const _listMoviesRef = listMoviesRef;
+export { _listMoviesRef as listMoviesRef };
 
-exports.listMovies = function listMovies(dc) {
+export function listMovies(dc) {
   return executeQuery(listMoviesRef(dc));
-};
+}
 
 const listUsersRef = (dc) => {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
@@ -73,11 +87,12 @@ const listUsersRef = (dc) => {
   return queryRef(dcInstance, 'ListUsers');
 }
 listUsersRef.operationName = 'ListUsers';
-exports.listUsersRef = listUsersRef;
+const _listUsersRef = listUsersRef;
+export { _listUsersRef as listUsersRef };
 
-exports.listUsers = function listUsers(dc) {
+export function listUsers(dc) {
   return executeQuery(listUsersRef(dc));
-};
+}
 
 const listUserReviewsRef = (dc) => {
   const { dc: dcInstance} = validateArgs(connectorConfig, dc, undefined);
@@ -85,11 +100,12 @@ const listUserReviewsRef = (dc) => {
   return queryRef(dcInstance, 'ListUserReviews');
 }
 listUserReviewsRef.operationName = 'ListUserReviews';
-exports.listUserReviewsRef = listUserReviewsRef;
+const _listUserReviewsRef = listUserReviewsRef;
+export { _listUserReviewsRef as listUserReviewsRef };
 
-exports.listUserReviews = function listUserReviews(dc) {
+export function listUserReviews(dc) {
   return executeQuery(listUserReviewsRef(dc));
-};
+}
 
 const getMovieByIdRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
@@ -97,11 +113,12 @@ const getMovieByIdRef = (dcOrVars, vars) => {
   return queryRef(dcInstance, 'GetMovieById', inputVars);
 }
 getMovieByIdRef.operationName = 'GetMovieById';
-exports.getMovieByIdRef = getMovieByIdRef;
+const _getMovieByIdRef = getMovieByIdRef;
+export { _getMovieByIdRef as getMovieByIdRef };
 
-exports.getMovieById = function getMovieById(dcOrVars, vars) {
+export function getMovieById(dcOrVars, vars) {
   return executeQuery(getMovieByIdRef(dcOrVars, vars));
-};
+}
 
 const searchMovieRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
@@ -109,8 +126,9 @@ const searchMovieRef = (dcOrVars, vars) => {
   return queryRef(dcInstance, 'SearchMovie', inputVars);
 }
 searchMovieRef.operationName = 'SearchMovie';
-exports.searchMovieRef = searchMovieRef;
+const _searchMovieRef = searchMovieRef;
+export { _searchMovieRef as searchMovieRef };
 
-exports.searchMovie = function searchMovie(dcOrVars, vars) {
+export function searchMovie(dcOrVars, vars) {
   return executeQuery(searchMovieRef(dcOrVars, vars));
-};
+}

@@ -1,25 +1,49 @@
-const { createMovieRef, upsertUserRef, addReviewRef, deleteReviewRef, listMoviesRef, listUsersRef, listUserReviewsRef, getMovieByIdRef, searchMovieRef } = require('../');
-const { DataConnect, CallerSdkTypeEnum } = require('@angular/fire/data-connect');
-const { injectDataConnectQuery, injectDataConnectMutation } = require('@tanstack-query-firebase/angular/data-connect');
-const { inject, EnvironmentInjector } = require('@angular/core');
+import {
+  createMovieRef,
+  upsertUserRef,
+  addReviewRef,
+  deleteReviewRef,
+  listMoviesRef,
+  listUsersRef,
+  listUserReviewsRef,
+  getMovieByIdRef,
+  searchMovieRef
+} from '../';
 
-exports.injectCreateMovie = function injectCreateMovie(args, injector) {
+import {
+  DataConnect,
+  CallerSdkTypeEnum
+} from '@angular/fire/data-connect';
+
+import {
+  injectDataConnectQuery,
+  injectDataConnectMutation
+} from '@tanstack-query-firebase/angular/data-connect';
+
+import {
+  inject,
+  EnvironmentInjector
+} from '@angular/core';
+
+
+
+export function injectCreateMovie(args, injector) {
   return injectDataConnectMutation(createMovieRef, args, injector, CallerSdkTypeEnum.GeneratedAngular);
 }
 
-exports.injectUpsertUser = function injectUpsertUser(args, injector) {
+export function injectUpsertUser(args, injector) {
   return injectDataConnectMutation(upsertUserRef, args, injector, CallerSdkTypeEnum.GeneratedAngular);
 }
 
-exports.injectAddReview = function injectAddReview(args, injector) {
+export function injectAddReview(args, injector) {
   return injectDataConnectMutation(addReviewRef, args, injector, CallerSdkTypeEnum.GeneratedAngular);
 }
 
-exports.injectDeleteReview = function injectDeleteReview(args, injector) {
+export function injectDeleteReview(args, injector) {
   return injectDataConnectMutation(deleteReviewRef, args, injector, CallerSdkTypeEnum.GeneratedAngular);
 }
 
-exports.injectListMovies = function injectListMovies(options, injector) {
+export function injectListMovies(options, injector) {
   const finalInjector = injector || inject(EnvironmentInjector);
   const dc = finalInjector.get(DataConnect);
   return injectDataConnectQuery(() => {
@@ -31,7 +55,7 @@ exports.injectListMovies = function injectListMovies(options, injector) {
   }, finalInjector, CallerSdkTypeEnum.GeneratedAngular);
 }
 
-exports.injectListUsers = function injectListUsers(options, injector) {
+export function injectListUsers(options, injector) {
   const finalInjector = injector || inject(EnvironmentInjector);
   const dc = finalInjector.get(DataConnect);
   return injectDataConnectQuery(() => {
@@ -43,7 +67,7 @@ exports.injectListUsers = function injectListUsers(options, injector) {
   }, finalInjector, CallerSdkTypeEnum.GeneratedAngular);
 }
 
-exports.injectListUserReviews = function injectListUserReviews(options, injector) {
+export function injectListUserReviews(options, injector) {
   const finalInjector = injector || inject(EnvironmentInjector);
   const dc = finalInjector.get(DataConnect);
   return injectDataConnectQuery(() => {
@@ -55,7 +79,7 @@ exports.injectListUserReviews = function injectListUserReviews(options, injector
   }, finalInjector, CallerSdkTypeEnum.GeneratedAngular);
 }
 
-exports.injectGetMovieById = function injectGetMovieById(args, options, injector) {
+export function injectGetMovieById(args, options, injector) {
   const finalInjector = injector || inject(EnvironmentInjector);
   const dc = finalInjector.get(DataConnect);
   const varsFactoryFn = (typeof args === 'function') ? args : () => args;
@@ -68,7 +92,7 @@ exports.injectGetMovieById = function injectGetMovieById(args, options, injector
   }, finalInjector, CallerSdkTypeEnum.GeneratedAngular);
 }
 
-exports.injectSearchMovie = function injectSearchMovie(args, options, injector) {
+export function injectSearchMovie(args, options, injector) {
   const finalInjector = injector || inject(EnvironmentInjector);
   const dc = finalInjector.get(DataConnect);
   const varsFactoryFn = (typeof args === 'function') ? args : () => args;
@@ -80,4 +104,3 @@ exports.injectSearchMovie = function injectSearchMovie(args, options, injector) 
     };
   }, finalInjector, CallerSdkTypeEnum.GeneratedAngular);
 }
-

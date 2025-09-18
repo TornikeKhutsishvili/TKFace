@@ -1,48 +1,19 @@
-// Import Firebase SDKs
-import {
-  initializeApp,      // Initialize Firebase
-  getApps,            // Check if Firebase apps are initialized
-  getApp              // Get the default app
-} from "firebase/app";
-
-
-import {
-  getFirestore,       // Firestore database
-  collection,         // for collections
-  addDoc,             // for adding documents
-  getDocs,            // for fetching documents
-  doc,                // for document references
-  updateDoc,          // for updating documents
-  deleteDoc,          // Firestore functions
-  query,              // for queries (e.g., filtering users)
-  where,              // for conditions in queries
-  orderBy,            // for sorting
-  limit               // for limiting results
-} from "firebase/firestore";
-
-
-import {
-    getAuth,                              // for authentication
-    createUserWithEmailAndPassword,       // for registration
-    signInWithEmailAndPassword,           // for login
-    signOut,                              // for logout
-    onAuthStateChanged                    // to track user login state
-} from "firebase/auth";
-
-
 import {
   RouterModule,
   RouterOutlet
 } from '@angular/router';
 
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { getAnalytics } from "firebase/analytics";
-import { firebaseConfig } from '../environments';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { Navigation } from "./shared/components/navigation/navigation";
 import { Footer } from "./shared/components/footer/footer";
+import { FirebaseService } from "./core/services/firebase-service";
 
 
 @Component({
@@ -60,14 +31,15 @@ import { Footer } from "./shared/components/footer/footer";
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
-export class App {
+export class App implements OnInit {
   protected title = 'TKFace';
 
-  constructor() {
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
+  constructor(private firebaseService: FirebaseService) {}
+
+  ngOnInit() {
+    console.log(this.firebaseService.auth);
+    console.log(this.firebaseService.db);
+    console.log(this.firebaseService.analytics);
   }
 
 }

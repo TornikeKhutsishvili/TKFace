@@ -19,15 +19,20 @@ import {
   provideAuth
 } from '@angular/fire/auth';
 
+import {
+  provideHttpClient,
+  withFetch
+} from '@angular/common/http';
+
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { firebaseConfig } from '../environments';
-import { provideHttpClient } from '@angular/common/http';
+
 
 export const appConfig: ApplicationConfig = {
 
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),

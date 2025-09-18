@@ -1,7 +1,33 @@
-import { createMovieRef, upsertUserRef, addReviewRef, deleteReviewRef, listMoviesRef, listUsersRef, listUserReviewsRef, getMovieByIdRef, searchMovieRef } from '../../';
-import { DataConnect, CallerSdkTypeEnum } from '@angular/fire/data-connect';
-import { injectDataConnectQuery, injectDataConnectMutation } from '@tanstack-query-firebase/angular/data-connect';
-import { inject, EnvironmentInjector } from '@angular/core';
+import {
+  createMovieRef,
+  upsertUserRef,
+  addReviewRef,
+  deleteReviewRef,
+  listMoviesRef,
+  listUsersRef,
+  listUserReviewsRef,
+  getMovieByIdRef,
+  searchMovieRef
+} from '../../';
+
+import {
+  DataConnect,
+  CallerSdkTypeEnum
+} from '@angular/fire/data-connect';
+
+import {
+  injectDataConnectQuery,
+  injectDataConnectMutation
+} from '@tanstack-query-firebase/angular/data-connect';
+
+import {
+  inject,
+  EnvironmentInjector
+} from '@angular/core';
+
+
+
+
 export function injectCreateMovie(args, injector) {
   return injectDataConnectMutation(createMovieRef, args, injector, CallerSdkTypeEnum.GeneratedAngular);
 }
@@ -79,4 +105,3 @@ export function injectSearchMovie(args, options, injector) {
     };
   }, finalInjector, CallerSdkTypeEnum.GeneratedAngular);
 }
-

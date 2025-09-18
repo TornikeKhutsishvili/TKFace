@@ -1,10 +1,17 @@
-import { queryRef, executeQuery, mutationRef, executeMutation, validateArgs } from 'firebase/data-connect';
+import {
+  queryRef,
+  executeQuery,
+  mutationRef,
+  executeMutation,
+  validateArgs
+} from 'firebase/data-connect';
 
 export const connectorConfig = {
   connector: 'example',
   service: 'tkface',
   location: 'us-central1'
 };
+
 
 export const createMovieRef = (dcOrVars, vars) => {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
