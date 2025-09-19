@@ -24,6 +24,11 @@ import {
   withFetch
 } from '@angular/common/http';
 
+import {
+  provideClientHydration,
+  withIncrementalHydration
+} from '@angular/platform-browser';
+
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { firebaseConfig } from '../environments';
@@ -38,7 +43,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideClientHydration(withIncrementalHydration())
   ]
 
 };
