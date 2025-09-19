@@ -11,9 +11,9 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FirestoreModule } from '@angular/fire/firestore';
-import { Navigation } from "./shared/components/navigation/navigation";
-import { Footer } from "./shared/components/footer/footer";
 import { FirebaseService } from "./core/services/firebase-service";
+import { Navigation } from "./shared/ui-components/navigation/navigation";
+import { Footer } from "./shared/ui-components/footer/footer";
 
 
 @Component({
